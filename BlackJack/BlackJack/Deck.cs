@@ -24,42 +24,26 @@ namespace BlackJack
             FillDeck();
         }
 
+        private Card Replace(Card card)
+        {
+            if ((int)card.Value >= 10 && (int)card.Value <= 13)
+            {
+                card.Point = 10;
+            }
+            return card;
+        }
+
         private void CreateDeck()
         {
-            //foreach (var suit in Enum.GetValues(typeof(CardSuit)))
-            //{
-            //    foreach (var value in Enum.GetValues(typeof(CardValue)))
-            //    {
-            //        if ((int)value <= Constant.maxValue)
-            //        {
-            //            _deck.Add(new Card() { Suit = (CardSuit)suit, Value = (CardValue)value, Point = (int)value });
-            //        }
-            //        if (((int)value > Constant.maxValue) && ((int)value <= Constant.valueSize))
-            //        {
-            //            _deck.Add(new Card() { Suit = (CardSuit)suit, Value = (CardValue)value, Point = Constant.maxValue });
-            //        }
-            //    }
-            //}
-
-            for (int i = 0; i < Constant.deckSize; i++)
+            for (int i = 1; i <= Constant.deckSize; i++)
             {
-                _deck.Add(new Card() { Suit = (CardSuit)(i % 4), Value = (CardValue)(i % 13), Point = (i % 13) });
+                _deck.Add(Replace(new Card()
+                {
+                    Suit = (i % 4) == 0 ? (CardSuit)4 : (CardSuit)(i % 4),
+                    Value = (i % 13) == 0 ? (CardValue)13 : (CardValue)(i % 13),
+                    Point = (i % 13) == 0 ? 13 : (i % 13)
+                }));
             }
-
-            //for (int i = 1; i <= Constant.suitSize; i++)
-            //{
-            //    for (int j = 1; j <= Constant.valueSize - 1; j++)
-            //    {
-            //        if (j <= Constant.maxValue)
-            //        {
-            //            _deck.Add(new Card() { Suit = (CardSuit)i, Value = (CardValue)j, Point = j });
-            //        }
-            //        if ((j >= Constant.maxValue) && (j <= Constant.valueSize))
-            //        {
-            //            _deck.Add(new Card() { Suit = (CardSuit)i, Value = (CardValue)j, Point = Constant.maxValue });
-            //        }
-            //    }
-            //}
         }
 
         private void Shuffle()

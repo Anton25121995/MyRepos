@@ -27,7 +27,6 @@ namespace BlackJack
 
         void MainPhase(Player player, Dealer dealer, Deck deck)
         {
-            dealer.Draw = dealer.hand.Result < Constant.jack;
             while (player.Draw)
             {
                 player.HitOrStand(); // предложить взять еще карту или отказаться
@@ -37,13 +36,16 @@ namespace BlackJack
                     CheckJack(player, dealer);
                 }
             }
-            if (!(player.Busted)) //если у игрока не перебор, то диллер играет до Constant.border
+
+            if (dealer.Draw && !player.Draw) //если у игрока не перебор, то диллер играет до Constant.border
             {
-                while (dealer.Draw)
+                while (dealer.Draw = (dealer.hand.Result < 17) ? true : false)
                 {
                     dealer.Turn(deck);
                 }
+                player.HitOrStand();
             }
+
             if ((dealer.Draw) && (!dealer.Busted))
             {
                 DecideWin();
@@ -77,7 +79,6 @@ namespace BlackJack
         {
             player.hand.TakeCard(deck);
             player.hand.TakeCard(deck);
-            //CheckJack(player, dealer);
         }
 
         void DecideWin()
@@ -92,7 +93,7 @@ namespace BlackJack
                 View.PlayerWon();
             }
 
-            if ((player.hand.Result > dealer.hand.Result) && (dealer.hand.Result < Constant.jack))
+            if ((dealer.hand.Result == Constant.jack) || player.Busted)
             {
                 View.PlayerLost();
             }
