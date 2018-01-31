@@ -30,9 +30,9 @@ namespace BlackJack
                 Draw = false;
                 Busted = true;
             }
-            if (hand.Result == Constant.jack) ///////чет надо сделать если победа
+            if (hand.Result == Constant.jack)
             {
-                Draw = false; ///////чет надо сделать если победа
+                Draw = false; 
             }
         }
 

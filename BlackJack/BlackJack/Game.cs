@@ -25,10 +25,13 @@ namespace BlackJack
             deck = new Deck();
         }
 
-        void MainPhase(Player player, Dealer dealer, Deck deck)
+
+
+        ////не получается чтобы после того как у дилера набирается 17, повторялся основной цикл игры - предложить игрокувзять карту или дилеру
+
+        void MainPhase(Player player, Dealer dealer, Deck deck)//
         {
-            
-            while (player.Draw)
+            while (player.Draw) 
             {
                 player.HitOrStand(); // предложить взять еще карту или отказаться
                 if (player.Draw)
@@ -37,13 +40,13 @@ namespace BlackJack
                     //CheckJack(player, dealer);
                 }
             }
-            if (!(player.Busted)) //если у игрока не перебор, то диллер играет до Constant.border
+
+            if (!player.Draw) //если у игрока не перебор, то диллер играет до Constant.border
             {
                 while (dealer.Draw = (dealer.hand.Result < 17) ? true : false)
                 {
                     dealer.Turn(deck);
                 }
-                 //отсюда надо в начало функции
             }
 
             if ((dealer.Draw) && (!dealer.Busted))
