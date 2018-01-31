@@ -27,23 +27,23 @@ namespace BlackJack
 
         void MainPhase(Player player, Dealer dealer, Deck deck)
         {
+            
             while (player.Draw)
             {
                 player.HitOrStand(); // предложить взять еще карту или отказаться
                 if (player.Draw)
                 {
                     player.Turn(deck);
-                    CheckJack(player, dealer);
+                    //CheckJack(player, dealer);
                 }
             }
-
-            if (dealer.Draw && !player.Draw) //если у игрока не перебор, то диллер играет до Constant.border
+            if (!(player.Busted)) //если у игрока не перебор, то диллер играет до Constant.border
             {
                 while (dealer.Draw = (dealer.hand.Result < 17) ? true : false)
                 {
                     dealer.Turn(deck);
                 }
-                player.HitOrStand();
+                 //отсюда надо в начало функции
             }
 
             if ((dealer.Draw) && (!dealer.Busted))
