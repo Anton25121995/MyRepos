@@ -13,60 +13,42 @@ namespace BlackJack
 
         public void Playing()
         {
-            player = new Player("Player");
-            dealer = new Dealer("Dealer");
+            bool isContinue = true;
 
-            View.Welcome();
-            StartPhase();
-            MainPhase(player, dealer, deck);
-            CheckJack(player, dealer);
-
-            Propose();
-            deck = new Deck();
-        }
-
-
-
-        ////не получается чтобы после того как у дилера набирается 17, повторялся основной цикл игры - предложить игрокувзять карту или дилеру
-
-        void MainPhase(Player player, Dealer dealer, Deck deck)//
-        {
-            while (player.Draw) 
+            while (isContinue)
             {
-                player.HitOrStand(); // предложить взять еще карту или отказаться
-                if (player.Draw)
-                {
-                    player.Turn(deck);
-                    //CheckJack(player, dealer);
-                }
-            }
+                player = new Player("Player");
+                dealer = new Dealer("Dealer");
+                deck = new Deck();
+                View.Welcome();
+                StartPhase();
 
-            if (!player.Draw) //если у игрока не перебор, то диллер играет до Constant.border
-            {
-                while (dealer.Draw = (dealer.hand.Result < 17) ? true : false)
-                {
-                    dealer.Turn(deck);
-                }
-            }
-
-            if ((dealer.Draw) && (!dealer.Busted))
-            {
+                MainPhase(player, dealer, deck);
                 DecideWin();
-                Propose();
+
+                isContinue = Check();
+                Console.Clear();
             }
         }
 
-        public void CheckJack(Player player, Dealer dealer)
+        void Action(Player player)
         {
+            player.Turn(deck);
+            player.ShowCards();
             player.CheckJack();
-            dealer.CheckJack();
-            if (player.Busted || dealer.Busted)
+        }
+
+        void MainPhase(Player player, Dealer dealer, Deck deck)
+        {
+            while (player.HitOrStand())
             {
-                DecideWin();
+                Action(player);
             }
-            if ((player.hand.Result == Constant.jack) || (dealer.hand.Result == Constant.jack))
+
+            while (dealer.hand.Result < Constant.border && !player.Busted)
             {
-                DecideWin();
+                Action(dealer);
+                dealer.Draw = dealer.hand.Result < Constant.border;
             }
         }
 
@@ -75,7 +57,6 @@ namespace BlackJack
             GetStart(dealer, deck);
             GetStart(player, deck);
             View.DisplayBoard(player, dealer);
-            CheckJack(player, dealer);
         }
 
         void GetStart(Player player, Deck deck)
@@ -86,12 +67,11 @@ namespace BlackJack
 
         void DecideWin()
         {
-            if ((player.hand.Result < dealer.hand.Result) && (dealer.Busted))
-            {
-                View.PlayerWon();
-            }
-
-            if ((player.hand.Result > dealer.hand.Result) && (player.hand.Result == Constant.jack))
+            View.DisplayBoard(player, dealer);
+            
+            if (((player.hand.Result > dealer.hand.Result) && !player.Busted)
+                || (player.hand.Result == Constant.jack) 
+                || (player.hand.Result < dealer.hand.Result && dealer.Busted))
             {
                 View.PlayerWon();
             }
@@ -112,11 +92,6 @@ namespace BlackJack
             }
         }
 
-        void Propose()
-        {
-            Check();
-            Console.Clear();
-        }
 
         public bool Check()
         {

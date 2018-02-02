@@ -6,14 +6,14 @@ namespace BlackJack
 {
     public class Deck
     {
-        private List<Card> _deck; // для перемешивания
-        private Stack<Card> _mainDeck; // основная рабочая колода
+        private List<Card> _deck;
+        private Stack<Card> _mainDeck;
         private Random rand = new Random();
 
         public Deck()
         {
             Random rand = new Random();
-            _deck = new List<Card>(52);
+            _deck = new List<Card>(Constant.deckSize);
             GenDeck();
         }
 
@@ -26,9 +26,9 @@ namespace BlackJack
 
         private Card Replace(Card card)
         {
-            if ((int)card.Value >= 10 && (int)card.Value <= 13)
+            if ((int)card.Value >= Constant.maxValue && (int)card.Value <= Constant.valueSize)
             {
-                card.Point = 10;
+                card.Point = Constant.maxValue;
             }
             return card;
         }
@@ -39,22 +39,21 @@ namespace BlackJack
             {
                 _deck.Add(Replace(new Card()
                 {
-                    Suit = (i % 4) == 0 ? (CardSuit)4 : (CardSuit)(i % 4),
-                    Value = (i % 13) == 0 ? (CardValue)13 : (CardValue)(i % 13),
-                    Point = (i % 13) == 0 ? 13 : (i % 13)
+                    Suit = (i % Constant.suitSize) == 0 ? (CardSuit)Constant.suitSize : (CardSuit)(i % Constant.suitSize),
+                    Value = (i % Constant.valueSize) == 0 ? (CardValue)Constant.valueSize : (CardValue)(i % Constant.valueSize),
+                    Point = (i % Constant.valueSize) == 0 ? Constant.valueSize : (i % Constant.valueSize)
                 }));
             }
         }
 
         private void Shuffle()
         {
-            Random rand = new Random();
-            _deck = _deck.OrderBy(x => rand.Next()).ToList();
+            _deck = _deck.OrderBy(x => Guid.NewGuid()).ToList();
         }
 
-        private void FillDeck() // перемешанную колоду закидываем в стек
+        private void FillDeck()
         {
-            _mainDeck = new Stack<Card>(52);
+            _mainDeck = new Stack<Card>(_deck);
             foreach (Card x in _deck)
             {
                 _mainDeck.Push(x);

@@ -1,6 +1,4 @@
-﻿
-
-namespace BlackJack
+﻿namespace BlackJack
 {
     public static class Constant
     {

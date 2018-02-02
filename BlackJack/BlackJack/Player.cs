@@ -19,7 +19,7 @@ namespace BlackJack
         public void Turn(Deck deck)
         {
             hand.TakeCard(deck);
-            hand.ViewCards();
+            
             CheckJack();
         }
 
@@ -36,9 +36,15 @@ namespace BlackJack
             }
         }
 
-        public void HitOrStand()
+        public bool HitOrStand()
         {
             Draw = View.HitOrStand();
+            return Draw;
+        }
+
+        public void ShowCards()
+        {
+            hand.ViewCards();
         }
     }
 }
