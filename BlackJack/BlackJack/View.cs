@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlackJack
 {
@@ -52,7 +49,6 @@ namespace BlackJack
             Console.WriteLine("_______________________________________");
         }
         
-
         public static string Input()
         {
             string answer = Console.ReadLine().ToUpper();

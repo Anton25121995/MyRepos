@@ -5,7 +5,7 @@ namespace BlackJack
     class Game
     {
         Player player;
-        Dealer dealer;
+        Player dealer;
 
         Deck deck = new Deck();
 
@@ -16,7 +16,7 @@ namespace BlackJack
             while (isContinue)
             {
                 player = new Player("Player");
-                dealer = new Dealer("Dealer");
+                dealer = new Player("Dealer");
                 deck = new Deck();
                 View.Welcome();
                 StartPhase();
@@ -29,7 +29,7 @@ namespace BlackJack
             }
         }
 
-        void MainPhase(Player player, Dealer dealer, Deck deck)
+        void MainPhase(Player player, Player dealer, Deck deck)
         {
             while (player.HitOrStand())
             {
@@ -60,16 +60,14 @@ namespace BlackJack
         {
             View.DisplayBoard(player, dealer);
 
-            if (((player.Hand.Result > dealer.Hand.Result) && !player.Busted)
-                || (player.Hand.Result == Constant.Jack)
-                || (player.Hand.Result < dealer.Hand.Result && dealer.Busted))
+            if (((player.Hand.Result > dealer.Hand.Result) && !player.Busted || dealer.Busted)
+                || (player.Hand.Result == Constant.BlackJack))
             {
                 View.PlayerWon();
             }
 
-            if ((dealer.Hand.Result == Constant.Jack) 
-                || player.Busted
-                || (dealer.Hand.Result > player.Hand.Result && !player.Busted && !dealer.Busted))
+            if (((player.Hand.Result < dealer.Hand.Result)  && !dealer.Busted || player.Busted)
+                || (dealer.Hand.Result == Constant.BlackJack))
             {
                 View.PlayerLost();
             }

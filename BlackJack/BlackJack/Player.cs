@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BlackJack
+﻿namespace BlackJack
 {
     public class Player
     {
@@ -30,12 +27,12 @@ namespace BlackJack
 
         public void CheckJack()
         {
-            if (Hand.Result > Constant.Jack)
+            if (Hand.Result > Constant.BlackJack)
             {
                 Draw = false;
                 Busted = true;
             }
-            if (Hand.Result == Constant.Jack)
+            if (Hand.Result == Constant.BlackJack)
             {
                 Draw = false;
             }
