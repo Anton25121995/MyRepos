@@ -7,5 +7,6 @@ namespace Library.Models
 {
     public class RegistrationModel
     {
+
     }
 }

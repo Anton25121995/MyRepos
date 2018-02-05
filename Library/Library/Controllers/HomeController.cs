@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Library.Models;
 
 namespace Library.Controllers
 {
     public class HomeController : Controller
     {
+       
+        BookContext db = new BookContext();
+
         public ActionResult Index()
         {
-            return View();
-        }
+            // получаем из бд все объекты Book
+            IEnumerable<Book> books = db.Books;
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
+            // передаем все объекты в динамическое свойство Books в ViewBag
+            ViewBag.Books = books;
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
+            // возвращаем представление
             return View();
         }
     }
