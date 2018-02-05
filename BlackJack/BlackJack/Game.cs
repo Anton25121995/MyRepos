@@ -2,10 +2,10 @@
 
 namespace BlackJack
 {
-    class Game
+    public class Game
     {
-        Player player;
-        Player dealer;
+        private Player _player;
+        private Player _dealer;
 
         Deck deck = new Deck();
 
@@ -15,13 +15,13 @@ namespace BlackJack
 
             while (isContinue)
             {
-                player = new Player("Player");
-                dealer = new Player("Dealer");
+                _player = new Player("Player");
+                _dealer = new Player("Dealer");
                 deck = new Deck();
                 View.Welcome();
                 StartPhase();
 
-                MainPhase(player, dealer, deck);
+                MainPhase(_player, _dealer, deck);
                 DecideWin();
 
                 isContinue = View.IsPlayAgain() ? true : false;
@@ -29,50 +29,57 @@ namespace BlackJack
             }
         }
 
-        void MainPhase(Player player, Player dealer, Deck deck)
+        private void MainPhase(Player player, Player dealer, Deck deck)
         {
             while (player.HitOrStand())
             {
                 player.Action(deck);
             }
 
-            while (dealer.Hand.Result < Constant.Border && !player.Busted)
+            while (dealer.GetResult() < Constant.MaxDealerResult && !player.Busted)
             {
                 dealer.Action(deck);
-                dealer.Draw = dealer.Hand.Result < Constant.Border;
+                dealer.Draw = dealer.GetResult() < Constant.MaxDealerResult;
             }
         }
 
-        void StartPhase()
+        private void StartPhase()
         {
-            GetStart(dealer, deck);
-            GetStart(player, deck);
-            View.DisplayBoard(player, dealer);
+            GetStart(_dealer, deck);
+            GetStart(_player, deck);
+            View.DisplayBoard(_player, _dealer);
         }
 
-        void GetStart(Player player, Deck deck)
+        private void GetStart(Player player, Deck deck)
         {
-            player.Hand.TakeCard(deck);
-            player.Hand.TakeCard(deck);
+            for (int i = 0; i < Constant.StartCardCount; i++)
+            {
+                player.Turn(deck);
+            }
         }
 
-        void DecideWin()
+        private void DecideWin()
         {
-            View.DisplayBoard(player, dealer);
+            int playerResult = _player.GetResult();
+            int dealerResult = _dealer.GetResult();
 
-            if (((player.Hand.Result > dealer.Hand.Result) && !player.Busted || dealer.Busted)
-                || (player.Hand.Result == Constant.BlackJack))
+            View.DisplayBoard(_player, _dealer);
+
+            if ((playerResult > dealerResult && !_player.Busted) 
+                || _dealer.Busted
+                || (playerResult == Constant.BlackJack))
             {
                 View.PlayerWon();
             }
 
-            if (((player.Hand.Result < dealer.Hand.Result)  && !dealer.Busted || player.Busted)
-                || (dealer.Hand.Result == Constant.BlackJack))
+            if ((playerResult < dealerResult && !_dealer.Busted ) 
+                || _player.Busted
+                || (dealerResult == Constant.BlackJack))
             {
                 View.PlayerLost();
             }
 
-            if (player.Hand.Result == dealer.Hand.Result)
+            if (playerResult == dealerResult)
             {
                 View.Tie();
             }

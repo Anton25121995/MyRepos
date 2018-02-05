@@ -5,7 +5,7 @@ namespace BlackJack
     public class Hand
     {
         private List<Card> _myCards;
-        public int Result { get; set; }
+        public int Result { get; private set; }
 
         public Hand()
         {

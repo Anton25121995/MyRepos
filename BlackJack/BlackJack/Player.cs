@@ -2,20 +2,25 @@
 {
     public class Player
     {
-        public Hand Hand { get; set; }
+        private Hand _hand { get; set; }
         public string Name { get; set; }
-        public bool Busted { get; set; } = false;
+        public bool Busted { get; set; }
         public bool Draw { get; set; } = true;
 
         public Player(string name)
         {
             Name = name;
-            Hand = new Hand();
+            _hand = new Hand();
         }
 
         public void Turn(Deck deck)
         {
-            Hand.TakeCard(deck);
+            _hand.TakeCard(deck);
+        }
+
+        public int GetResult()
+        {
+            return _hand.Result;
         }
 
         public void Action(Deck deck)
@@ -27,12 +32,12 @@
 
         public void CheckJack()
         {
-            if (Hand.Result > Constant.BlackJack)
+            if (_hand.Result > Constant.BlackJack)
             {
                 Draw = false;
                 Busted = true;
             }
-            if (Hand.Result == Constant.BlackJack)
+            if (_hand.Result == Constant.BlackJack)
             {
                 Draw = false;
             }
@@ -49,7 +54,7 @@
 
         public void ShowCards()
         {
-            Hand.ViewCards();
+            _hand.ViewCards();
         }
     }
 }

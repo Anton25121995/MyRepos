@@ -16,19 +16,21 @@ namespace BlackJack
         private void CreateDeck()
         {
             List<Card> tempDeck = new List<Card>(Constant.DeckSize);
-            for (int i = 1; i <= Constant.DeckSize; i++)
+            for (int i = 1; i <= Constant.SuitSize; i++)
             {
-                tempDeck.Add(new Card()
+                for (int j = 1; j <= Constant.ValueSize; j++)
                 {
-                    Suit = (i % Constant.SuitSize) == 0 ? (CardSuit)Constant.SuitSize : (CardSuit)(i % Constant.SuitSize),
-                    Value = (i % Constant.ValueSize) == 0 ? (CardValue)Constant.ValueSize : (CardValue)(i % Constant.ValueSize),
-                    Point = (i % Constant.ValueSize) == 0
-                    || (i % Constant.ValueSize)== Constant.JackVal
-                    || (i % Constant.ValueSize) == Constant.QueenVal ? Constant.MaxValue : (i % Constant.ValueSize)
-                });
+                    if (j < Constant.MaxValue)
+                    {
+                        tempDeck.Add(new Card() { Suit = (CardSuit)i, Value = (CardValue)j, Point = j });
+                    }
+                    if ((j >= Constant.MaxValue) && (j <= Constant.ValueSize))
+                    {
+                        tempDeck.Add(new Card() { Suit = (CardSuit)i, Value = (CardValue)j, Point = Constant.MaxValue });
+                    }
+                }
             }
-
-            tempDeck =  Shuffle(tempDeck);
+            tempDeck = Shuffle(tempDeck);
             _mainDeck = new Stack<Card>(tempDeck);
         }
 

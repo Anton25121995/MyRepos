@@ -42,10 +42,10 @@ namespace BlackJack
         {
             Console.WriteLine("_________________TOTAL_________________");
             Console.WriteLine("Dealer's cards:");
-            dealer.Hand.ViewCards();
+            dealer.ShowCards();
             Console.WriteLine();
             Console.WriteLine("Player's cards:");
-            player.Hand.ViewCards();
+            player.ShowCards();
             Console.WriteLine("_______________________________________");
         }
         
