@@ -31,11 +31,6 @@ namespace BlackJack
             Console.WriteLine("Player & Dealer have the same points :) It is tie");
         }
 
-        public static void Both()
-        {
-            Console.WriteLine("Player & Dealer have 21 :) It is tie");
-        }
-
         public static void ShowCard(List<Card> myCards, int point)
         {
             foreach (Card card in myCards)
@@ -50,10 +45,10 @@ namespace BlackJack
         {
             Console.WriteLine("_________________TOTAL_________________");
             Console.WriteLine("Dealer's cards:");
-            dealer.hand.ViewCards();
+            dealer.Hand.ViewCards();
             Console.WriteLine();
             Console.WriteLine("Player's cards:");
-            player.hand.ViewCards();
+            player.Hand.ViewCards();
             Console.WriteLine("_______________________________________");
         }
         

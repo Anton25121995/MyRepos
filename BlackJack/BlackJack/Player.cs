@@ -5,7 +5,7 @@ namespace BlackJack
 {
     public class Player
     {
-        public Hand hand;
+        public Hand Hand { get; set; }
         public string Name { get; set; }
         public bool Busted { get; set; } = false;
         public bool Draw { get; set; } = true;
@@ -13,38 +13,46 @@ namespace BlackJack
         public Player(string name)
         {
             Name = name;
-            hand = new Hand();
+            Hand = new Hand();
         }
 
         public void Turn(Deck deck)
         {
-            hand.TakeCard(deck);
-            
+            Hand.TakeCard(deck);
+        }
+
+        public void Action(Deck deck)
+        {
+            Turn(deck);
+            ShowCards();
             CheckJack();
         }
 
         public void CheckJack()
         {
-            if (hand.Result > Constant.jack)
+            if (Hand.Result > Constant.Jack)
             {
                 Draw = false;
                 Busted = true;
             }
-            if (hand.Result == Constant.jack)
+            if (Hand.Result == Constant.Jack)
             {
-                Draw = false; 
+                Draw = false;
             }
         }
 
         public bool HitOrStand()
         {
-            Draw = View.HitOrStand();
+            if (!Busted)
+            {
+                Draw = View.HitOrStand();
+            }
             return Draw;
         }
 
         public void ShowCards()
         {
-            hand.ViewCards();
+            Hand.ViewCards();
         }
     }
 }

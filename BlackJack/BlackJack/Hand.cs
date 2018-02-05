@@ -26,6 +26,5 @@ namespace BlackJack
         {
             View.ShowCard(_myCards, Result);
         }
-
     }
 }

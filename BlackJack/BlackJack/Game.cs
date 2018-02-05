@@ -9,8 +9,6 @@ namespace BlackJack
 
         Deck deck = new Deck();
 
-        public bool MoreGames { get; set; } = true;
-
         public void Playing()
         {
             bool isContinue = true;
@@ -26,29 +24,22 @@ namespace BlackJack
                 MainPhase(player, dealer, deck);
                 DecideWin();
 
-                isContinue = Check();
+                isContinue = View.IsPlayAgain() ? true : false;
                 Console.Clear();
             }
-        }
-
-        void Action(Player player)
-        {
-            player.Turn(deck);
-            player.ShowCards();
-            player.CheckJack();
         }
 
         void MainPhase(Player player, Dealer dealer, Deck deck)
         {
             while (player.HitOrStand())
             {
-                Action(player);
+                player.Action(deck);
             }
 
-            while (dealer.hand.Result < Constant.border && !player.Busted)
+            while (dealer.Hand.Result < Constant.Border && !player.Busted)
             {
-                Action(dealer);
-                dealer.Draw = dealer.hand.Result < Constant.border;
+                dealer.Action(deck);
+                dealer.Draw = dealer.Hand.Result < Constant.Border;
             }
         }
 
@@ -61,42 +52,32 @@ namespace BlackJack
 
         void GetStart(Player player, Deck deck)
         {
-            player.hand.TakeCard(deck);
-            player.hand.TakeCard(deck);
+            player.Hand.TakeCard(deck);
+            player.Hand.TakeCard(deck);
         }
 
         void DecideWin()
         {
             View.DisplayBoard(player, dealer);
-            
-            if (((player.hand.Result > dealer.hand.Result) && !player.Busted)
-                || (player.hand.Result == Constant.jack) 
-                || (player.hand.Result < dealer.hand.Result && dealer.Busted))
+
+            if (((player.Hand.Result > dealer.Hand.Result) && !player.Busted)
+                || (player.Hand.Result == Constant.Jack)
+                || (player.Hand.Result < dealer.Hand.Result && dealer.Busted))
             {
                 View.PlayerWon();
             }
 
-            if ((dealer.hand.Result == Constant.jack) || player.Busted)
+            if ((dealer.Hand.Result == Constant.Jack) 
+                || player.Busted
+                || (dealer.Hand.Result > player.Hand.Result && !player.Busted && !dealer.Busted))
             {
                 View.PlayerLost();
             }
 
-            if ((player.hand.Result == Constant.jack) && (dealer.hand.Result == Constant.jack))
-            {
-                View.Both();
-            }
-
-            if ((player.hand.Result == dealer.hand.Result) && (player.hand.Result != Constant.jack))
+            if (player.Hand.Result == dealer.Hand.Result)
             {
                 View.Tie();
             }
-        }
-
-
-        public bool Check()
-        {
-            MoreGames = (View.IsPlayAgain()) ? true : false;
-            return MoreGames;
         }
     }
 }

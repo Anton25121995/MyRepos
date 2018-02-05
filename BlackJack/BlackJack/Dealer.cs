@@ -6,7 +6,7 @@ namespace BlackJack
         public Dealer(string name) : base(name)
         {
             Name = name;
-            hand = new Hand();
+            Hand = new Hand();
         }
     }
 }
