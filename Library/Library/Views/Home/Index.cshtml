@@ -1,34 +1,41 @@
-﻿@{
-    Layout = null;
+﻿@model IEnumerable<Library.Models.BookViewModel>
+
+@{
+    ViewBag.Title = "Index";
 }
 
-<!DOCTYPE html>
+<h2>Index</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Книжный магазин</title>
-</head>
-<body>
-    <div>
-        <h3>Распродажа книг</h3>
-        <table>
-            <tr>
-                <td><p>Название книги</p></td>
-                <td><p>Автор</p></td>
-                <td><p>Цена</p></td>
-                <td></td>
-            </tr>
-            @foreach (var b in ViewBag.Books)
-            {
-                <tr>
-                    <td><p>@b.Name</p></td>
-                    <td><p>@b.Author</p></td>
-                    <td><p>@b.Price</p></td>
-                    <td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>
-                </tr>
-            }
-        </table>
-    </div>
-</body>
-</html>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Order", "MakeOrder", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
