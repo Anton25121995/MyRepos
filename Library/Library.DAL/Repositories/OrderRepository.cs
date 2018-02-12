@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Library.DAL.EF;
 using Library.DAL.Entities;
-using Library.DAL.EF;
 using Library.DAL.Interfaces;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Library.DAL.Repositories
 {
     public class OrderRepository : IRepository<Order>
     {
-        private BookContext db;
+        private LibraryContext db;
 
-        public OrderRepository(BookContext context)
+        public OrderRepository(LibraryContext context)
         {
             this.db = context;
         }
@@ -36,10 +36,12 @@ namespace Library.DAL.Repositories
         {
             db.Entry(order).State = EntityState.Modified;
         }
+
         public IEnumerable<Order> Find(Func<Order, Boolean> predicate)
         {
             return db.Orders.Include(o => o.Book).Where(predicate).ToList();
         }
+
         public void Delete(int id)
         {
             Order order = db.Orders.Find(id);

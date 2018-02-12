@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Library.DAL.Entities;
 using Library.DAL.EF;
+using Library.DAL.Entities;
 using Library.DAL.Interfaces;
-using System.Data.Entity;
 
 namespace Library.DAL.Repositories
 {
     public class EFUnitOfWork : IUnitOfWork
     {
-        private BookContext db;
+        private LibraryContext db;
         private BookRepository bookRepository;
         private OrderRepository orderRepository;
 
         public EFUnitOfWork(string connectionString)
         {
-            db = new BookContext(connectionString);
+            db = new LibraryContext(connectionString);
         }
+
         public IRepository<Book> Books
         {
             get

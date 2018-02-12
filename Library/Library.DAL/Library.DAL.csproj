@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F93364B5-AED2-4F9A-9580-13B4B5558F66}</ProjectGuid>
+    <ProjectGuid>{2E7BA3CC-33AF-4E0C-9E97-AFB50790A731}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Library.DAL</RootNamespace>
@@ -85,7 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF\BookContext.cs" />
+    <Compile Include="EF\LibraryContext.cs" />
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

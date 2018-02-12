@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Library.DAL.EF;
 using Library.DAL.Entities;
-using Library.DAL.EF;
 using Library.DAL.Interfaces;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Library.DAL.Repositories
 {
     public class BookRepository : IRepository<Book>
     {
-        private BookContext db;
+        private LibraryContext db;
 
-        public BookRepository(BookContext context)
+        public BookRepository(LibraryContext context)
         {
             this.db = context;
         }
