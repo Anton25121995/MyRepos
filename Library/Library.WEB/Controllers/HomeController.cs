@@ -19,7 +19,9 @@ namespace Library.WEB.Controllers
         public ActionResult Index()
         {
             IEnumerable<BookDTO> bookDtos = orderService.GetBooks();
-            //Mapper.Initialize(cfg => cfg.CreateMap<BookDTO, BookViewModel>());
+
+            Mapper.Initialize(cfg => cfg.CreateMap<BookDTO, BookViewModel>());
+
             var books = Mapper.Map<IEnumerable<BookDTO>, List<BookViewModel>>(bookDtos);
             return View(books);
         }
@@ -29,9 +31,11 @@ namespace Library.WEB.Controllers
             try
             {
                 BookDTO book = orderService.GetBook(id);
+
                 Mapper.Initialize(cfg => cfg.CreateMap<BookDTO, OrderViewModel>()
                     .ForMember("BookId", opt => opt.MapFrom(src => src.Id)));
                 var order = Mapper.Map<BookDTO, OrderViewModel>(book);
+
                 return View(order);
             }
 
