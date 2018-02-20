@@ -3,3 +3,12 @@ C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\Library.BLL
 C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\obj\Debug\Library.BLL.csproj.CoreCompileInputs.cache
 C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\obj\Debug\Library.BLL.dll
 C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\obj\Debug\Library.BLL.pdb
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\Library.DAL.dll
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\Library.Entities.dll
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\EntityFramework.dll
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\Library.DAL.pdb
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\Library.DAL.dll.config
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\Library.Entities.pdb
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\Library.Entities.dll.config
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\EntityFramework.xml
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\obj\Debug\Library.BLL.csprojResolveAssemblyReference.cache

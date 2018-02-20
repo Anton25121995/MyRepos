@@ -40,13 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\ValidationException.cs" />
+    <Compile Include="Interfaces\IManageEntityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\BookService.cs" />
+    <Compile Include="Services\BrochureService.cs" />
+    <Compile Include="Services\MagazineService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Library.DAL\Library.DAL.csproj">
       <Project>{5b0c14e3-cb33-4d58-9d4e-9bdd7fa3c26f}</Project>
       <Name>Library.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Library.Entities\Library.Entities.csproj">
+      <Project>{06FAF365-70F7-410B-A48B-F0020BF05F9B}</Project>
+      <Name>Library.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

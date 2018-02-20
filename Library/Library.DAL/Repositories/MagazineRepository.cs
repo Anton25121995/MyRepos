@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.DAL.Repositories
 {
-    internal class MagazineRepository : BaseRepository<Magazine>
+    public class MagazineRepository : BaseRepository<Magazine>
     {
 
     }

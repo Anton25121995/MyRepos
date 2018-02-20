@@ -12,17 +12,17 @@ namespace Library.DAL.Repositories
 {
     public abstract class BaseRepository<T> where T : class
     {
-        private LibraryContext db
-        {
-            get { return db; }
-            set { if (db == null) db = new LibraryContext(); }
-        }
-
+        private LibraryContext db;
         private readonly IDbSet<T> dbSet;
+
+        private LibraryContext Db
+        {
+            get { return db ?? (db = new LibraryContext()); }
+        }
 
         protected BaseRepository()
         {
-            dbSet = db.Set<T>();
+            dbSet = Db.Set<T>();
         }
 
         public IEnumerable<T> GetAll()
