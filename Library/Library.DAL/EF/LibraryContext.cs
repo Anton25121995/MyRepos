@@ -1,32 +1,19 @@
-﻿using Library.DAL.Entities;
+using System;
 using System.Data.Entity;
+using Library.Entities.Entities;
 
-namespace Library.DAL.EF
+namespace Library.DAL
 {
-    public class LibraryContext : DbContext
+    public partial class LibraryContext : DbContext
     {
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Order> Orders { get; set; }
+        public LibraryContext()
+            : base("name=LibraryContext")
+        {
 
-        static LibraryContext()
-        {
-            Database.SetInitializer<LibraryContext>(new StoreDbInitializer());
         }
-        public LibraryContext(string connectionString)
-            : base(connectionString)
-        {
-        }
-    }
 
-    public class StoreDbInitializer : DropCreateDatabaseIfModelChanges<LibraryContext>
-    {
-        protected override void Seed(LibraryContext db)
-        {
-            db.Books.Add(new Book { Name = "Война и мир", Author = "Л. Толстой", Price = 220 });
-            db.Books.Add(new Book { Name = "Отцы и дети", Author = "И. Тургенев", Price = 180 });
-            db.Books.Add(new Book { Name = "Чайка", Author = "А. Чехов", Price = 150 });
-            db.Books.Add(new Book { Name = "Преступление и наказание", Author = "Ф.Достоевский", Price = 200 });
-            db.SaveChanges();
-        }
+        public virtual DbSet<Brochure> Brochures { get; set; }
+        public virtual DbSet<Magazine> Magazines { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
     }
 }

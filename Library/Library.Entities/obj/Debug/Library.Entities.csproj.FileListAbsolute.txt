@@ -1,0 +1,10 @@
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\bin\Debug\Library.Entities.dll.config
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\bin\Debug\Library.Entities.dll
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\bin\Debug\Library.Entities.pdb
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\bin\Debug\EntityFramework.dll
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\bin\Debug\EntityFramework.xml
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\obj\Debug\Library.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\obj\Debug\Library.Entities.dll
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.Entities\obj\Debug\Library.Entities.pdb

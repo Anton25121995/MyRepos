@@ -1,0 +1,5 @@
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\Library.BLL.dll
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\bin\Debug\Library.BLL.pdb
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\obj\Debug\Library.BLL.csproj.CoreCompileInputs.cache
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\obj\Debug\Library.BLL.dll
+C:\Users\Anuitex-42\Desktop\NewLibrary\Library\Library.BLL\obj\Debug\Library.BLL.pdb
