@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="cxk-wN-pdQ" customClass="TableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="3342" translatesAutoresizingMaskIntoConstraints="NO">
+                        <rect key="frame" x="58" y="0.0" width="203" height="25"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <constraints>
+                            <constraint id="3629" firstItem="3342" firstAttribute="height" constant="25"/>
+                        </constraints>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="3345" translatesAutoresizingMaskIntoConstraints="NO">
+                        <rect key="frame" x="58" y="28" width="203" height="25"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <constraints>
+                            <constraint id="4413" firstItem="3345" firstAttribute="height" constant="25"/>
+                        </constraints>
+                    </textView>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="3369" translatesAutoresizingMaskIntoConstraints="NO" enabled="NO">
+                        <rect key="frame" x="269" y="24" width="51" height="31"/>
+                        <constraints>
+                            <constraint id="3370" firstItem="3369" firstAttribute="width" constant="49"/>
+                        </constraints>
+                    </switch>
+                    <view contentMode="scaleToFill" id="4681" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                        </accessibility>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4944" translatesAutoresizingMaskIntoConstraints="NO" image="user.png">
+                        <rect key="frame" x="5" y="8" width="45" height="43"/>
+                        <constraints>
+                            <constraint id="5287" firstItem="4944" firstAttribute="height" constant="43"/>
+                            <constraint id="5599" firstItem="4944" firstAttribute="width" constant="45"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint id="3343" firstItem="3342" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top"/>
+                    <constraint id="3372" firstItem="YTl-1W-gDM" firstAttribute="trailing" secondItem="3369" secondAttribute="trailing" constant="2"/>
+                    <constraint id="3382" firstItem="3369" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" constant="-0.25"/>
+                    <constraint id="4945" firstItem="3342" firstAttribute="leading" secondItem="4944" secondAttribute="trailing" constant="8"/>
+                    <constraint id="4946" firstItem="3345" firstAttribute="leading" secondItem="4944" secondAttribute="trailing" constant="8"/>
+                    <constraint id="4948" firstItem="4944" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="8"/>
+                    <constraint id="4966" firstItem="3345" firstAttribute="top" secondItem="3342" secondAttribute="bottom" constant="3"/>
+                    <constraint id="5001" firstItem="3345" firstAttribute="trailing" secondItem="3369" secondAttribute="leading" constant="-8"/>
+                    <constraint id="5577" firstItem="4944" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="5"/>
+                    <constraint id="5600" firstItem="3369" firstAttribute="leading" secondItem="3342" secondAttribute="trailing" constant="8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-62" y="-88"/>
+            <connections>
+                <outlet property="descriptionTextView" destination="3345" id="name-outlet-3345"/>
+                <outlet property="titleTextView" destination="3342" id="name-outlet-3342"/>
+                <outlet property="isDoneSwitch" destination="3369" id="name-outlet-3369"/>
+                <outlet property="opaqueLabel" destination="4681" id="name-outlet-4681"/>
+                <outlet property="userImagePhotoView" destination="4944" id="name-outlet-4944"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="user.png" width="1024" height="1024"/>
+    </resources>
+</document>

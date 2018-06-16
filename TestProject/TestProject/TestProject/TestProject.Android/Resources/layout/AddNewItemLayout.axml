@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="wrap_content"
+    p1:id="@+id/linearLayout">
+    <include
+        p1:id="@+id/toolbar"
+        p1:layout="@layout/toolbar" />
+    <EditText
+        p1:id="@+id/addNew_title"
+        p1:text="Title"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        local:MvxBind="Text Item.Title" />
+    <EditText
+        p1:id="@+id/addNew_description"
+        p1:text="Description"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        local:MvxBind="Text Item.Description" />
+    <Button
+        p1:text="Cancel"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/cancel_button"
+        local:MvxBind="Click GoBackCommand" />
+    <Button
+        p1:text="Create new"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/save_button"
+        local:MvxBind="Click SaveChangesCommand" />
+</LinearLayout>

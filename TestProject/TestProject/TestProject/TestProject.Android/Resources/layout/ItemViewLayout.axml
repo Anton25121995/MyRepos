@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="wrap_content"
+    p1:id="@+id/linearLayout1"
+    p1:background="@android:color/white">
+    <include
+        layout="@layout/toolbar" />
+    <Mvx.MvxImageView
+        p1:id="@+id/userPhotoImageView"
+        p1:layout_marginTop="10dp"
+        p1:layout_width="100dp"
+        p1:layout_height="100dp"
+        p1:scaleType="fitXY"
+        p1:layout_gravity="center_horizontal"
+        local:MvxBind="Bitmap FromPathToBitmap(Item.ImageName)" />
+    <Button
+        p1:id="@+id/addPhotoButton"
+        p1:layout_marginTop="8dp"
+        p1:layout_width="130dp"
+        p1:layout_height="40dp"
+        p1:text="Add photo"
+        p1:scaleType="fitXY"
+        p1:layout_gravity="center_horizontal" />
+    <EditText
+        p1:id="@+id/editView_title"
+        p1:text="Title"
+        p1:layout_marginTop="10dp"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        local:MvxBind="Text Item.Title" />
+    <EditText
+        p1:id="@+id/editView_description"
+        p1:text="Description"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        local:MvxBind="Text Item.Description" />
+    <CheckBox
+        p1:id="@+id/checkbox"
+        p1:layout_width="wrap_content"
+        p1:layout_height="wrap_content"
+        p1:text="Done"
+        local:MvxBind="Checked Item.IsDone" />
+    <Button
+        p1:text="Cancel"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/cancel_button"
+        local:MvxBind="Click CancelChangesCommand" />
+    <Button
+        p1:text="Save"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/save_button"
+        local:MvxBind="Click ItemChangedCommand" />
+    <Button
+        p1:text="Delete"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/save_button"
+        local:MvxBind="Click ItemDeleteCommand" />
+</LinearLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    p1:orientation="vertical"
+    p1:layout_width="match_parent"
+    p1:layout_height="wrap_content"
+    p1:id="@+id/linearLayout">
+    <Toolbar
+        p1:id="@+id/toolbar"
+        p1:layout_width="match_parent"
+        p1:layout_height="48.5dp"
+        p1:minHeight="?android:attr/actionBarSize"
+        p1:background="?android:attr/colorPrimary"
+        p1:theme="@android:style/ThemeOverlay.Material.Dark.ActionBar">
+        <Button
+            p1:id="@+id/backbutton"
+            p1:text="Back"
+            p1:layout_width="wrap_content"
+            p1:layout_height="match_parent"
+            local:MvxBind="Click GoBackCommand"
+            p1:backgroundTint="#ff00c853"
+            p1:layout_marginLeft="20dp" />
+        <Button
+            p1:id="@+id/addbutton"
+            p1:text="+"
+            p1:layout_width="wrap_content"
+            p1:layout_height="wrap_content"
+            p1:backgroundTint="#ff00c853"
+            p1:layout_marginLeft="150dp"
+            local:MvxBind="Click CreateNewItemCommand" />
+    </Toolbar>
+</LinearLayout>
