@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HelloMvxForms.CustomControls.CustomSwitch">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" Spacing="0" Padding="0">
+            <BoxView HeightRequest="1" HorizontalOptions="Fill" Color="Teal" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="SwitchText" Grid.Row="0" Grid.Column="0" Margin="5" HorizontalOptions="Start" VerticalOptions="Start" />
+                <Switch x:Name="SwitchValue" Grid.Row="0" Grid.Column="1" VerticalOptions="Start" Toggled="SwitchValue_Toggled" />
+            </Grid>
+            <BoxView HeightRequest="1" HorizontalOptions="Fill" Color="Teal" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

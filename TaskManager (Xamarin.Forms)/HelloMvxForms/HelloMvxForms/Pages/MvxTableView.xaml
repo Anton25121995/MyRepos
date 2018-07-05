@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:MvxTableViewModel"
+    x:Class="HelloMvxForms.Core.Views.MvxTableView"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HelloMvxForms.Core.ViewModels;assembly=HelloMvxForms.Core"
+    xmlns:customcontrols="clr-namespace:HelloMvxForms.CustomControls;assembly=HelloMvxForms"
+    Title="Your list" BackgroundImage="listViewBackground.png">
+    <!--BackgroundImage="background.png"-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="addButton" 
+            Icon="addNew.png"
+            mvx:Bi.nd="Command CreateNewItemCommand"/>
+    </ContentPage.ToolbarItems>
+    <views:MvxContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="SearchBar"
+                       HeightRequest="40"
+                       Placeholder="Search"
+                       BackgroundColor="LightSkyBlue"
+                       Opacity="0.4"
+                       Text="{Binding Path=SearchText, Mode=TwoWay}"
+                       SearchCommand="{Binding  SearchItemCommand}"/>
+            <views:MvxListView
+                x:Name="listView"
+                Opacity="0.65"
+                ItemsSource="{mvx:MvxBind Items}"
+                IsEnabled="{Binding Path=IsEnabled, Mode=TwoWay}"
+                mvx:Bi.nd="ItemClick ItemSelectedCommand"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshTableCommand}"
+                ItemSelected="listView_ItemSelected"
+                IsRefreshing="{Binding IsBusy}"
+                SeparatorColor="Blue">
+                <views:MvxListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell x:Name="viewCell" Height="100" >
+                            <ViewCell.ContextActions>
+                                <MenuItem x:Name="clippedItem"
+                                          Text="Delete"
+                                          IsDestructive="True"
+                                          BindingContext="{Binding Source={x:Reference listView}, Path=BindingContext}" 
+                                          Command="{Binding DeleteSelectedItemCommand}"
+                                          CommandParameter="{Binding Source={x:Reference viewCell}, Path=BindingContext}"/>
+                            </ViewCell.ContextActions>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout>
+                                    <Image Source="{mvx:MvxBind FromPathToImageSource(ImageName)}"
+                                          HeightRequest="40"
+                                           WidthRequest="40"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout
+                                    Orientation="Vertical">
+                                    <Label Text="{Binding Title}"/>
+                                    <Label Text="{Binding Description}"/>
+                                </StackLayout>
+                                <Switch
+                                    x:Name="itemSwitch"
+                                    HorizontalOptions="EndAndExpand"
+                                    VerticalOptions="Center"
+                                    IsToggled="{Binding IsDone, Mode=OneWay}"
+                                    IsEnabled="False"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </views:MvxListView.ItemTemplate>
+            </views:MvxListView>
+        </StackLayout>
+    </views:MvxContentPage.Content>
+</views:MvxContentPage>

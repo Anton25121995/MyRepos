@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:LoginViewModel"
+    x:Class="HelloMvxForms.Core.Views.LoginView"
+    xmlns:app="clr-namespace:HelloMvxForms"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HelloMvxForms.Core.ViewModels;assembly=HelloMvxForms.Core"
+    Title="Login" BackgroundImage="loginBackground.png">
+    <views:MvxContentPage.Content>
+        <StackLayout VerticalOptions="Start">
+            <Image Source="login_icon.png"
+                   HeightRequest="200"
+                   WidthRequest="200"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"/>
+            <StackLayout>
+                <Entry x:Name="usernameEntry"
+                   Placeholder="Email"
+                   mvx:Bi.nd="Text Email"
+                   FontSize="Large"
+                   TextColor="Black"
+                   BackgroundColor="Snow"
+                   PlaceholderColor="DarkGray"
+                   Keyboard="Email"
+                   WidthRequest="300"
+                   VerticalOptions="Center">
+                </Entry>
+                <Entry x:Name="passwordEntry"
+                   Placeholder="Password"
+                   mvx:Bi.nd="Text Password"
+                   FontSize="Large"
+                   TextColor="Black"
+                   WidthRequest="300"
+                   BackgroundColor="Snow" 
+                   PlaceholderColor="DarkGray"
+                   IsPassword="True" />
+            </StackLayout>
+            <Button x:Name="loginButton"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Login"
+                    Opacity="0.6"
+                    mvx:Bi.nd="Command LoginCommand"
+                    BackgroundColor="LightGreen"
+                    Style="{StaticResource buttonStyle}"
+                    TextColor="White"
+                    WidthRequest="250"
+                    HeightRequest="50"
+                    HorizontalOptions="Center" />
+        </StackLayout>
+    </views:MvxContentPage.Content>
+</views:MvxContentPage>

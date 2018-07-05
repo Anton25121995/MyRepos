@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:customcontrols="clr-namespace:HelloMvxForms.CustomControls;assembly=HelloMvxForms"
+    x:TypeArguments="viewModels:MvxItemViewModel"
+    x:Class="HelloMvxForms.Core.Views.MvxItemView"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:HelloMvxForms.Core.ViewModels;assembly=HelloMvxForms.Core"
+    Title="Details" BackgroundImage="detailBackground.png">
+    <views:MvxContentPage.Content>
+        <StackLayout>
+            <Image
+                   x:Name="PhotoView"
+                   mvx:Bi.nd="Source FromPathToImageSource(Item.ImageName)"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   HorizontalOptions="Center"/>
+            <Button x:Name="takePhoto" 
+                    BorderRadius="20"
+                    Style="{StaticResource buttonStyle}"
+                    HeightRequest="40"
+                    WidthRequest="150"
+                    Image="update.png"
+                    HorizontalOptions="Center"/>
+            <customcontrols:CustomSwitch
+                Text="On if this task is done"
+                Value="{Binding Item.IsDone,Mode=TwoWay}"/>
+            <Entry x:Name="titleEntry" Placeholder="Title" mvx:Bi.nd="Text Item.Title, Mode = TwoWay"/>
+            <Entry x:Name="descriptionEntry" Placeholder="Description" mvx:Bi.nd="Text Item.Description, Mode = TwoWay"/>
+            <Button
+                Text="Speak"
+                Style="{StaticResource buttonStyle}"
+                HeightRequest="45"
+                WidthRequest="240"
+                Opacity="0.8"
+                BackgroundColor="LightSkyBlue"
+                VerticalOptions="CenterAndExpand"
+                mvx:Bi.nd="Command SpeakCommand"/>
+            <Button
+                Text="Save"
+                Style="{StaticResource buttonStyle}"
+                BackgroundColor="SeaGreen"
+                HeightRequest="45"
+                WidthRequest="240"
+                Opacity="0.8"
+                VerticalOptions="CenterAndExpand"
+                mvx:Bi.nd="Command ItemChangedCommand"/>
+            <Button
+                Text="Delete"
+                Style="{StaticResource buttonStyle}"
+                HeightRequest="45"
+                WidthRequest="240"
+                Opacity="0.8"
+                BackgroundColor="Red"
+                VerticalOptions="CenterAndExpand"
+                mvx:Bi.nd="Command ItemDeleteCommand"/>
+            <Button
+                Text="Back"
+                Style="{StaticResource buttonStyle}"
+                HeightRequest="45"
+                WidthRequest="240"
+                Opacity="0.8"
+                BackgroundColor="YellowGreen"
+                VerticalOptions="CenterAndExpand"
+                mvx:Bi.nd="Command CancelChangesCommand"/>
+        </StackLayout>
+    </views:MvxContentPage.Content>
+</views:MvxContentPage>
